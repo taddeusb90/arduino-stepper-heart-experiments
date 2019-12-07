@@ -4,6 +4,8 @@ const int STEPS_PER_REVOLUTION = 2048;
 const int CLOCKWISE = 1;
 const int COUNTER_CLOCKWISE = 0;
 const int STEPS_PER_HALF_REVOLUTION = 1024;
+const int STEP = 5;
+
 // states
 const int BEGIN = 1;
 const int CONTINUE = 2;
@@ -11,6 +13,7 @@ const int PAUSE = 3;
 const int END = 4;
 const int RESET = 5;
 const int HOME = 6;
+
 
 int stepCount = 0;         // number of steps the motor has taken
 int motorDirection = CLOCKWISE;
@@ -48,12 +51,12 @@ void moveMotor() {
     }
 
   if (motorDirection == CLOCKWISE) {
-    motor.step(1);
+    motor.step(STEP);
   } else if (motorDirection == COUNTER_CLOCKWISE) {
-    motor.step(-1);
+    motor.step(-STEP);
   }
   
-  stepCount++;
+  stepCount += STEP;
   delay(500);
 }
 
